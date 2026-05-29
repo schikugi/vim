@@ -2,6 +2,7 @@ syntax on
 
 filetype indent off
 filetype plugin on
+set nocompatible
 
 set showmatch         " 括弧の対応をハイライト
 set showcmd           " 入力中のコマンドを表示
@@ -11,7 +12,6 @@ set listchars=tab:>.,trail:_,extends:>,precedes:<" 不可視文字の表示形�
 set display=uhex      " 印字不可能文字を16進数で表示
 " 全角スペースをハイライト
 if has("syntax")
-    syntax on
     function! ActivateInvisibleIndicator()
         syntax match InvisibleJISX0208Space "　" display containedin=ALL
         highlight InvisibleJISX0208Space term=underline ctermbg=Cyan guibg=peru
@@ -22,13 +22,11 @@ if has("syntax")
     augroup END
 endif
 
-" カレントウィンドウにのみ罫線を引く
-augroup cch
-  autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
-augroup END
-
+set wildmenu                  " コマンドライン補完を有効にする
+"set wildmode=list:longest     " コマンドライン補完モード
+set incsearch
+set clipboard=unnamedplus
+set cursorline
 set number
 " swpファイル出力無効
 set noswapfile
@@ -111,5 +109,3 @@ set fileformats=unix,dos,mac
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
-
-
