@@ -109,3 +109,5 @@ set fileformats=unix,dos,mac
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
+
+set helplang=ja,en
